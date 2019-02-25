@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+div.img_contain {
+  overflow-y: auto;
+  width: 100%;
+  max-height: 100%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  background-color: white;
+}
+
+img.page {
+  max-width:100%;
+  max-length:100%;
+}
+
+div.controls {
+  width:50%;
+  display: table-cell;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+button {
+  width: 250px;
+  height: 50px;
+  background-color: white;
+  vertical-align: top;
+  font-size: 1.6em;
+  font-weight: bold;
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+button.yb {
+  margin-right: 0.5em;
+  width: 28%;
+  height: 80%;
+  background-color:#3DE63D;
+  vertical-align: top;
+  font-size: 1.8em;
+  font-weight: bold;
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+button.nb {
+  width: 28%;
+  height: 80%;
+  margin-right: 0.5em;
+  background-color: #FF4444;
+  vertical-align: top;
+  font-size: 1.8em;
+  font-weight: bold;
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+button.ud {
+  width: 14%;
+  height: 40%;
+  background-color: rgb(151, 151, 151);
+  vertical-align: bottom;
+  font-size: 2em;
+  font-weight: bolder;
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+}

@@ -1,0 +1,33 @@
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<link rel="stylesheet" href="https://s3.amazonaws.com/smgtannotation/static/css/1.c103a3a5.chunk.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/smgtannotation/static/css/main.ba2e524d.chunk.css">
+
+<crowd-form>
+    <input name="foo" id="foo" type="hidden">
+
+
+<div id="root"></div>
+
+<!--<crowd-button variant="primary" onclick="document.querySelector('crowd-form').submit()">Submit</crowd-button>-->
+
+<div id='document-text' style="display: none;">
+    {{task.input.text}}
+</div>
+<div id='encodedImage' style="display: none;">
+    {{task.input.image_url}}
+</div>
+<div id="metadata" style="display: none;">
+    {{task.input.metadata}}
+</div>
+
+</crowd-form>
+
+<script>
+    document.querySelector('crowd-form').onsubmit = function() {
+        document.querySelector('input').value = document.querySelector('pre').innerText;
+    }
+</script>
+
+<script type="text/javascript" src="https://s3.amazonaws.com/smgtannotation/static/js/1.33aa3761.chunk.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/smgtannotation/static/js/main.061531b1.chunk.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/smgtannotation/static/js/runtime~main.229c360f.js"></script>
