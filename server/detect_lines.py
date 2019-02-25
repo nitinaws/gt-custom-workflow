@@ -72,6 +72,7 @@ def get_table_csv_results(bucket,key):
 
 
     table_blocks = []
+    blocks_map = {}
     for block in blocks:
         blocks_map[block['Id']] = block
         if block['BlockType'] == "LINE":

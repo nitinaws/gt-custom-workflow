@@ -1,24 +1,23 @@
 import React,{Component} from 'react'
 import { TokenAnnotator } from 'react-text-annotate'
-import { Document, Page } from 'react-pdf'
 
-const TEXT = `109277792 109277792 RWH 3477400 810976 7792902 01/30/2004 12:00:00 AM ED Discharge Summary Unsigned DIS ~~~ Report Status ~~~ Unsigned ED DISCHARGE NOTIFICATION / SUMMARY SHUFFSKOCKOTESKI, DRU ~~~ MRN ~~~ 3477400 ~~~ Age ~~~ 51y ~~~ REGISTRATION DATE ~~~ 01/30/2004 01:59 AM ~~~ Provider ~~~ KOMAND SILBEDOUETTLAND PRELIMINARY REPORT ~~~ PCP notified by MD ~~~ No - Other explanation ~~~ Benefits Assigned ~~~ N ~~~ Discharge Date / Time ~~~ 01/30/2004 08:28 ~~~ Discharge Status ~~~ Discharged ~~~ Condition on Discharge ~~~ Stable ~~~ Patient States Complaint ~~~ AGGRAVATED / NEEDS APS EVAL ~~~ Diagnosis ~~~ Impulsivity ~~~ 1` +
-    '109277792 109277792 RWH 3477400 810976 7792902 01/30/2004 12:00:00 AM ED Discharge Summary Unsigned DIS ~~~ Report Status ~~~ Unsigned ED DISCHARGE NOTIFICATION / SUMMARY SHUFFSKOCKOTESKI, DRU ~~~ MRN ~~~ 3477400 ~~~ Age ~~~ 51y ~~~ REGISTRATION DATE ~~~ 01/30/2004 01:59 AM ~~~ Provider ~~~ KOMAND SILBEDOUETTLAND PRELIMINARY REPORT ~~~ PCP notified by MD ~~~ No - Other explanation ~~~ Benefits Assigned ~~~ N ~~~ Discharge Date / Time ~~~ 01/30/2004 08:28 ~~~ Discharge Status ~~~ Discharged ~~~ Condition on Discharge ~~~ Stable ~~~ Patient States Complaint ~~~ AGGRAVATED / NEEDS APS EVAL ~~~ Diagnosis ~~~ Impulsivity ~~~ 1'
-const IMAGE_URL = "https://groundtruthnw.s3.amazonaws.com/raw-abstracts/1801.00041.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190225T201917Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=AKIAISPQWY2DKP2O45RQ%2F20190225%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=9915b301ed2c737e443965eb0993385c9aa3edbf680729af34216e49bf3397b9"
-const METADATA = "{\n" +
-    "      \"payor_id\": \"Aetna\",\n" +
-    "      \"claim_id\": \"133232\"\n" +
-    "    }";
+// const TEXT = `109277792 109277792 RWH 3477400 810976 7792902 01/30/2004 12:00:00 AM ED Discharge Summary Unsigned DIS ~~~ Report Status ~~~ Unsigned ED DISCHARGE NOTIFICATION / SUMMARY SHUFFSKOCKOTESKI, DRU ~~~ MRN ~~~ 3477400 ~~~ Age ~~~ 51y ~~~ REGISTRATION DATE ~~~ 01/30/2004 01:59 AM ~~~ Provider ~~~ KOMAND SILBEDOUETTLAND PRELIMINARY REPORT ~~~ PCP notified by MD ~~~ No - Other explanation ~~~ Benefits Assigned ~~~ N ~~~ Discharge Date / Time ~~~ 01/30/2004 08:28 ~~~ Discharge Status ~~~ Discharged ~~~ Condition on Discharge ~~~ Stable ~~~ Patient States Complaint ~~~ AGGRAVATED / NEEDS APS EVAL ~~~ Diagnosis ~~~ Impulsivity ~~~ 1` +
+//     '109277792 109277792 RWH 3477400 810976 7792902 01/30/2004 12:00:00 AM ED Discharge Summary Unsigned DIS ~~~ Report Status ~~~ Unsigned ED DISCHARGE NOTIFICATION / SUMMARY SHUFFSKOCKOTESKI, DRU ~~~ MRN ~~~ 3477400 ~~~ Age ~~~ 51y ~~~ REGISTRATION DATE ~~~ 01/30/2004 01:59 AM ~~~ Provider ~~~ KOMAND SILBEDOUETTLAND PRELIMINARY REPORT ~~~ PCP notified by MD ~~~ No - Other explanation ~~~ Benefits Assigned ~~~ N ~~~ Discharge Date / Time ~~~ 01/30/2004 08:28 ~~~ Discharge Status ~~~ Discharged ~~~ Condition on Discharge ~~~ Stable ~~~ Patient States Complaint ~~~ AGGRAVATED / NEEDS APS EVAL ~~~ Diagnosis ~~~ Impulsivity ~~~ 1'
+// const IMAGE_URL = "https://groundtruthnw.s3.amazonaws.com/raw-abstracts-jpgs/1801_00146.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190225T225559Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=AKIAISPQWY2DKP2O45RQ%2F20190225%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=b5ea9b21298e9780b56f48342a55e88c53e8a5ac44cbcf91e8abeff030b7c8d4"
+// const METADATA = "{\n" +
+//     "      \"payor_id\": \"Aetna\",\n" +
+//     "      \"claim_id\": \"133232\"\n" +
+//     "    }";
 
 
-// const TEXT = document.querySelector('#document-text').innerText;
-// const IMAGE_URL = document.querySelector('#encodedImage').innerText;
-// const METADATA = document.querySelector('#metadata').innerText;
+const TEXT = document.querySelector('#document-text').innerText;
+const IMAGE_URL = document.querySelector('#encodedImage').innerText;
+const METADATA = document.querySelector('#metadata').innerText;
 
 
 const TAG_COLORS = {
-  CONDITION: '#84d2ff',
-  DOSAGE: '#00ffa2',
+  ABSTRACT: '#84d2ff',
+  TOPIC: '#00ffa2',
 }
 
 
@@ -42,7 +41,7 @@ class App extends Component{
 
         this.state = {
             value: [],
-            tag: "CONDITION",
+            tag: "ABSTRACT",
             support_claim: "",
             notes: "",
             metadata: METADATA,
@@ -55,9 +54,6 @@ class App extends Component{
     this.setState({value});
   }
 
-  onDocumentLoadSuccess = ({ numPages }) => {
-        this.setState({ numPages });
-  }
 
   handleTagChange = e => {
     this.setState({tag: e.target.value})
@@ -95,25 +91,16 @@ class App extends Component{
 
 
           <Card>
-              {/*<div class="img_contain">*/}
-                {/*<img id="claims_image" name="claims_image" class="page" src={IMAGE_URL} alt="alt"/>*/}
-              {/*</div>*/}
-              <div>
-                  <Document
-                      url={IMAGE_URL}
-                      onLoadSuccess={this.onDocumentLoadSuccess}
-                  >
-                      <Page pageNumber={this.pageNumber} />
-                  </Document>
-                  <p>Page {this.pageNumber} of {this.numPages}</p>
+              <div class="img_contain">
+                <img id="claims_image" name="claims_image" class="page" src={IMAGE_URL} alt="alt"/>
               </div>
           </Card>
 
           <Card>
             <div class="col-sm-5" style={{paddingLeft:"0px"}}>
                 <select class="form-control" onChange={this.handleTagChange} value={this.state.tag}>
-                    <option name="CONDITION" value="CONDITION">CONDITION</option>
-                    <option name="DISCHARGE" value="DISCHARGE">DISCHARGE</option>
+                    <option name="ABSTRACT" value="ABSTRACT">ABSTRACT</option>
+                    <option name="TOPIC" value="TOPIC">TOPIC</option>
                 </select>
             </div>
             <div class="border border-success bg-light">
@@ -150,7 +137,7 @@ class App extends Component{
                 </div>
                 <div class="col">
                     <br></br>
-                <h5 class="font-weight-bold">Documentation Supporting Claim?</h5>
+                <h5 class="font-weight-bold">Is this a good Abstract?</h5>
                 <div className="col-md-8">
                       <button type="button" onClick={this.handleYesBtn}  className="btn btn-md btn-success btn-block" style={{fontSize:"30px"}} name="y_0">Yes</button>
                 </div>

@@ -40,7 +40,8 @@ def prepare(s3_image_path,s3_data_path ,s3_manifest_path):
             content_list.append({"source": json.dumps(entry)})
 
     print(content_list)
-    content = "".join(str(line) for line in content_list)
+    content = "".join(str("{}\n".format(line)) for line in content_list)
+
 
     body = bytes(content)
 
