@@ -8,9 +8,6 @@ import sys
 from pprint import pprint
 from urlparse import urlparse
 
-
-
-
 # get the results
 client = boto3.client(
     service_name='textract',
