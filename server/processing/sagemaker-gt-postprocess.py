@@ -3,7 +3,7 @@ import boto3
 from urllib.parse import urlparse
 
 def lambda_handler(event, context):
-
+    # Main lambda handler to create consolidated labels
     consolidated_labels = []
     print("Event: {}".format(event))
     s3 = boto3.client('s3')
@@ -39,4 +39,4 @@ def lambda_handler(event, context):
     except:
         raise Exception
 
-        return consolidated_labels
+    return consolidated_labels
