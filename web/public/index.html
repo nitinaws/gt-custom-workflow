@@ -1,0 +1,33 @@
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<div id='document-text' style="display: none;">
+  fjwjfpi jepfiji fejfi jfijf i jeifjeifjeifj jfijfiejfiejfi jfiejfiejfiej fjifjei fjiejfie fjiejfie jfiej fjiejfiejiej fjiejfiej ejiejfiejfie jfiejfiejife ifjeifje
+</div>
+<div id='encodedImage' style="display: none;">
+  https://arxiv.org/pdf/1702.06461.pdf
+</div>
+<div id="metadata" style="display: none;">
+  { "foo": "bar" }
+</div>
+
+<crowd-form>
+    <input name="annotations" id="annotations" type="hidden">
+
+     <!-- Prevent crowd-form from creating its own button -->
+    <crowd-button form-action="submit" style="display: none;"></crowd-button>
+</crowd-form>
+
+<!-- Custom annotation user interface is rendered here -->
+<div id="root"></div>
+
+<crowd-button id="submitButton">Submit</crowd-button>
+
+<script>
+    document.querySelector('crowd-form').onsubmit = function() {
+        document.getElementById('annotations').value = JSON.stringify(JSON.parse(document.querySelector('pre').innerText));
+    };
+
+    document.getElementById('submitButton').onclick = function() {
+        document.querySelector('crowd-form').submit();
+    };
+</script>
