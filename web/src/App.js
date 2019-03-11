@@ -29,9 +29,9 @@ class App extends Component {
 
     this.state = {
        value: [],
-       tag: "ABSTRACT",
+       tag: 'ABSTRACT',
        claimResult: false,
-       notes: "",
+       notes: '',
        metadata: METADATA,
        numPages: 1,
        pageNumber: 1,
@@ -63,7 +63,7 @@ class App extends Component {
       <div style={{ padding: 12, fontFamily: 'sans-serif' }}>
 
         <div className="row" style={{ fontFamily: 'sans-serif' }}>
-            <div class="col" style={{ maxWidth: '1000px' }}>
+            <div className="col" style={{ maxWidth: '1000px' }}>
               <h3>Instructions</h3>
               <p> The task can be completed with blank, or saved and returned to when time is available to make more
                   progress.
@@ -74,22 +74,22 @@ class App extends Component {
             <div></div>
         </div>
 
-        <div class="row" style={{ display: 'flex', marginBottom: 6 }}>
+        <div className="row" style={{ display: 'flex', marginBottom: 6 }}>
           <Card>
-              <div class="img_contain">
+              <div className="img_contain">
                 <iframe src={PDF_URL} style={{ height: '500px' }} />
               </div>
           </Card>
 
           <Card>
-            <div class="col-sm-5" style={{ paddingLeft:"0px" }}>
-                <select class="form-control" onChange={this.handleTagChange} value={this.state.tag}>
-                    <option name="ABSTRACT" value="ABSTRACT">ABSTRACT</option>
-                    <option name="TOPIC" value="TOPIC">TOPIC</option>
+            <div className="col-sm-5" style={{ paddingLeft:"0px" }}>
+                <select className="form-control" onChange={this.handleTagChange} value={this.state.tag}>
+                    <option value="ABSTRACT">ABSTRACT</option>
+                    <option value="TOPIC">TOPIC</option>
                 </select>
             </div>
 
-            <div class="border border-success bg-light">
+            <div className="border border-success bg-light">
              <TokenAnnotator
                 style={{
                   fontFamily: 'sans-serif',
@@ -104,27 +104,18 @@ class App extends Component {
                   tag: this.state.tag,
                   color: TAG_COLORS[this.state.tag],
                 })}
-                renderMark={props => (
-                  <mark
-                    key={props.key}
-                    onClick={() => props.onClick({start: props.start, end: props.end})}
-                    color={TAG_COLORS[this.state.tag]}
-                  >
-                    {props.content} [{props.tag}]
-                  </mark>
-                )}
               />
             </div>
 
-            <div class="form-row">
-                <div class="col-md-8">
-                <h5 class="font-weight-bold">Notes:</h5>
+            <div className="form-row">
+                <div className="col-md-8">
+                <h5 className="font-weight-bold">Notes:</h5>
                 <textarea className="form-control" rows="5" onChange={this.handleNotes} value={this.state.notes}
                           name="notes" rows="10" cols="80%"> </textarea>
                 </div>
-                <div class="col">
+                <div className="col">
                     <br></br>
-                <h5 class="font-weight-bold">Is this a good Abstract?</h5>
+                <h5 className="font-weight-bold">Is this a good Abstract?</h5>
                 <div className="col-md-8">
                       <button type="button" onClick={this.handleYesBtn}  className="btn btn-md btn-success btn-block" style={{fontSize:"30px"}} name="y_0">Yes</button>
                 </div>
