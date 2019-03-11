@@ -27,8 +27,8 @@ def lambda_handler(event, context):
                     'content': {
                         event['labelAttributeName']: {
                             'workerId': annotation['workerId'],
-                            'claims_info': new_annotation,
-                            'ddb_id': dataset['dataObject']['content']
+                            'annotations': new_annotation,
+                            'entry': dataset['dataObject']['content']
                             }
                         }
                     }
