@@ -63,7 +63,7 @@ class App extends Component {
       <div style={{ padding: 12, fontFamily: 'sans-serif' }}>
 
         <div className="row" style={{ fontFamily: 'sans-serif' }}>
-            <div className="col" style={{ maxWidth: '1000px' }}>
+            <div className="col" style={{ maxWidth: 1000 }}>
               <h3>Instructions</h3>
               <p> The task can be completed with blank, or saved and returned to when time is available to make more
                   progress.
@@ -77,7 +77,7 @@ class App extends Component {
         <div className="row" style={{ display: 'flex', marginBottom: 6 }}>
           <Card>
               <div className="img_contain">
-                <iframe src={PDF_URL} style={{ height: '500px' }} />
+                <iframe src={PDF_URL} style={{ height: 700, width: 600 }} />
               </div>
           </Card>
 
@@ -89,7 +89,10 @@ class App extends Component {
                 </select>
             </div>
 
-            <div className="border border-success bg-light" style={{ height: '300px', overflow: 'scroll' }}>
+            <div
+              className="border border-success bg-light"
+              style={{ height: 300, overflow: 'scroll', marginBottom: 20 }}
+            >
              <TokenAnnotator
                 style={{
                   fontFamily: 'sans-serif',
@@ -117,11 +120,11 @@ class App extends Component {
                     <br></br>
                 <h5 className="font-weight-bold">Is this a good Abstract?</h5>
                 <div className="col-md-8">
-                      <button type="button" onClick={this.handleYesBtn}  className="btn btn-md btn-success btn-block" style={{fontSize:"30px"}} name="y_0">Yes</button>
+                      <button type="button" onClick={this.handleYesBtn}  className="btn btn-md btn-success btn-block" style={{ fontSize: 30 }} name="y_0">Yes</button>
                 </div>
                 <br></br>
                 <div className="col-md-8">
-                      <button type="button" onClick={this.handleNoBtn}  className="btn btn-md btn-danger btn-block" style={{fontSize:"30px"}} name="n_0">No</button>
+                      <button type="button" onClick={this.handleNoBtn}  className="btn btn-md btn-danger btn-block" style={{ fontSize: 30 }} name="n_0">No</button>
                 </div>
                 </div>
             </div>
