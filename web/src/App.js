@@ -82,14 +82,14 @@ class App extends Component {
           </Card>
 
           <Card>
-            <div className="col-sm-5" style={{ paddingLeft:"0px" }}>
+            <div className="col-sm-5" style={{ paddingLeft: '0px' }}>
                 <select className="form-control" onChange={this.handleTagChange} value={this.state.tag}>
                     <option value="ABSTRACT">ABSTRACT</option>
                     <option value="TOPIC">TOPIC</option>
                 </select>
             </div>
 
-            <div className="border border-success bg-light">
+            <div className="border border-success bg-light" style={{ height: '300px', overflow: 'scroll' }}>
              <TokenAnnotator
                 style={{
                   fontFamily: 'sans-serif',
