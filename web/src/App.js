@@ -81,7 +81,7 @@ class App extends Component {
         <div className="row" style={{ display: 'flex', marginBottom: 6 }}>
           <Card>
               <div className="img_contain">
-                <iframe src={PDF_URL} style={{ height: 700, width: 600 }} />
+                <object type="application/pdf" data={PDF_URL} style={{ height: 700, width: 600 }} />
               </div>
           </Card>
 
