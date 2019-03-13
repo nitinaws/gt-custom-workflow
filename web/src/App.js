@@ -6,8 +6,12 @@ const PDF_URL = document.querySelector('#encodedImage').innerText;
 const METADATA = JSON.parse(document.querySelector('#metadata').innerText);
 
 const TAG_COLORS = {
-  ABSTRACT: '#84d2ff',
-  TOPIC: '#00ffa2',
+  BACKGROUND: '#84d2ff',
+  METHODS: '#00ffa2',
+  RESULTS: '#FFD700',
+  CONCLUSIONS: '#ADFF2F',
+  OBJECTIVES : '#B0E0E6',
+  LIMITATIONS : '#FFE4E1'
 }
 
 const Card = ({ children }) => (
@@ -29,7 +33,7 @@ class App extends Component {
 
     this.state = {
        value: [],
-       tag: 'ABSTRACT',
+       tag: 'BACKGROUND',
        claimResult: false,
        notes: '',
        metadata: METADATA,
@@ -67,7 +71,7 @@ class App extends Component {
               <h3>Instructions</h3>
               <p> The task can be completed with blank, or saved and returned to when time is available to make more
                   progress.
-                  If there is evidence in the record to support or deny an audit, <b>highlight</b> it with with the
+                  If there is evidence in the record to support or deny abstract quality, <b>highlight</b> it with the
                   cursor and select <b>Yes</b> or <b>No</b>.
                   Add any notes you have for each task in the <b>Notes</b> free text area.</p>
             </div>
@@ -84,8 +88,12 @@ class App extends Component {
           <Card>
             <div className="col-sm-5" style={{ paddingLeft: '0px' }}>
                 <select className="form-control" onChange={this.handleTagChange} value={this.state.tag}>
-                    <option value="ABSTRACT">ABSTRACT</option>
-                    <option value="TOPIC">TOPIC</option>
+                    <option value="BACKGROUND">BACKGROUND</option>
+                    <option value="METHODS">METHODS</option>
+                    <option value="RESULTS">RESULTS</option>
+                    <option value="CONCLUSIONS">CONCLUSIONS</option>
+                    <option value="OBJECTIVES">OBJECTIVES</option>
+                    <option value="LIMITATIONS">LIMITATIONS</option>
                 </select>
             </div>
 

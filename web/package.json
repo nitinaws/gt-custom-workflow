@@ -15,8 +15,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "aws s3 rm --recursive s3://smgtannotation",
-    "deploy": "aws s3 cp --recursive build/ s3://smgtannotation --acl public-read"
+    "clean": "aws s3 rm --recursive s3://smgtannotation/web/",
+    "deploy": "aws s3 cp --recursive build/ s3://smgtannotation/web/ --acl public-read"
   },
   "eslintConfig": {
     "extends": "react-app"

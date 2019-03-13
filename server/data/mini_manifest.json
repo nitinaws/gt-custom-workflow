@@ -1,0 +1,2 @@
+{'source': '{"image_file": "s3://smgtannotation/raw-abstracts/1801.00006.pdf", "text_file": "s3://smgtannotation/text/1801.00006.pdf.csv", "metadata": {"ISBN": "1-64174-070-1", "Author": "Tanya Brennan"}}'}
+{'source': '{"image_file": "s3://smgtannotation/raw-abstracts/1801.00015.pdf", "text_file": "s3://smgtannotation/text/1801.00015.pdf.csv", "metadata": {"ISBN": "1-76313-948-4", "Author": "Willie Briggs"}}'}

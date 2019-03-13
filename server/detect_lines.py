@@ -133,6 +133,8 @@ def main(args):
     bucket = input_url.netloc
     key = input_url.path[1:]
 
+    print(key)
+
     s3 = boto3.client('s3')
     response = s3.list_objects(Bucket=bucket, Prefix=key)
 
