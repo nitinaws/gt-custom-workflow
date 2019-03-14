@@ -1,4 +1,4 @@
-####Steps taken to create this project:
+#### Steps taken to create this project:
 
 - Clone repository and install pre-requisites
     
