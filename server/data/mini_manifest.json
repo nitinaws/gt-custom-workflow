@@ -1,2 +1,2 @@
-{'source': '{"image_file": "s3://smgtannotation/raw-abstracts/1801.00006.pdf", "text_file": "s3://smgtannotation/text/1801.00006.pdf.csv", "metadata": {"ISBN": "1-64174-070-1", "Author": "Tanya Brennan"}}'}
-{'source': '{"image_file": "s3://smgtannotation/raw-abstracts/1801.00015.pdf", "text_file": "s3://smgtannotation/text/1801.00015.pdf.csv", "metadata": {"ISBN": "1-76313-948-4", "Author": "Willie Briggs"}}'}
+{'source': '{"image_file": "s3://smgtannotation/raw-abstracts-jpgs/1801_00006.jpg", "text_file": "s3://smgtannotation/text/1801_00006.jpg.csv", "metadata": {"ISBN": "0-947261-56-7", "Author": "Lisa Johnson"}}'}
+{'source': '{"image_file": "s3://smgtannotation/raw-abstracts-jpgs/1801_00015.jpg", "text_file": "s3://smgtannotation/text/1801_00015.jpg.csv", "metadata": {"ISBN": "0-418-56723-9", "Author": "Martin Rosario"}}'}
