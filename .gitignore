@@ -25,7 +25,6 @@ web/npm-debug.log*
 web/yarn-debug.log*
 web/yarn-error.log*
 web/yarn.lock
-web/public
 !web/src
 !web/src/*
 web/.idea
@@ -36,3 +35,4 @@ server/.idea
 server/.serverless
 server/processing/labeling_lambda.zip
 server/.DS_Store
+server/data/.DS_Store
