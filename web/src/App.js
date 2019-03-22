@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TokenAnnotator } from 'react-text-annotate'
 
 const TEXT = document.querySelector('#document-text').innerText;
-const IMAGE_URL = document.querySelector('#encodedImage').innerText;
+const PDF_URL = document.querySelector('#document-pdf').innerText;
 const METADATA = JSON.parse(document.querySelector('#metadata').innerText);
 
 const TAG_COLORS = {
@@ -81,7 +81,7 @@ class App extends Component {
         <div className="row" style={{ display: 'flex', marginBottom: 6 }}>
           <Card>
               <div className="img_contain">
-                  <img id="claims_image" name="claims_image" className="page" src={IMAGE_URL} alt="alt" style={{ height: 700, width: 600 }}/>
+                  <iframe src={PDF_URL} title="document" type="application/pdf" style={{ height: 700, width: 600 }} />
               </div>
           </Card>
 
@@ -121,7 +121,7 @@ class App extends Component {
             <div className="form-row">
                 <div className="col-md-8">
                 <h5 className="font-weight-bold">Notes:</h5>
-                <textarea className="form-control" rows="5" onChange={this.handleNotes} value={this.state.notes}
+                <textarea className="form-control" onChange={this.handleNotes} value={this.state.notes}
                           name="notes" rows="10" cols="80%"> </textarea>
                 </div>
                 <div className="col">
