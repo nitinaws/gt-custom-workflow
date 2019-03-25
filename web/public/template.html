@@ -1,6 +1,6 @@
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
 <script src="https://s3.amazonaws.com/smgtannotation/web/static/js/1.7717d2bb.chunk.js"></script>
-<script src="https://s3.amazonaws.com/smgtannotation/web/static/js/main.a7b227c6.chunk.js"></script>
+<script src="https://s3.amazonaws.com/smgtannotation/web/static/js/main.0225d3ca.chunk.js"></script>
 <script src="https://s3.amazonaws.com/smgtannotation/web/static/js/runtime~main.229c360f.js"></script>
 
 <link rel="stylesheet" href="https://s3.amazonaws.com/smgtannotation/web/static/css/1.9276d28d.chunk.css">
@@ -9,8 +9,8 @@
 <div id='document-text' style="display: none;">
   {{ task.input.text }}
 </div>
-<div id='encodedImage' style="display: none;">
-  {{ task.input.image_url }}
+<div id='document-image' style="display: none;">
+        {{ task.input.image_url | grant_read_access }}
 </div>
 <div id="metadata" style="display: none;">
   {{ task.input.metadata }}

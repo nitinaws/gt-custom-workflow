@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TokenAnnotator } from 'react-text-annotate'
 
 const TEXT = document.querySelector('#document-text').innerText;
-const IMAGE_URL = document.querySelector('#encodedImage').innerText;
+const IMAGE_URL = document.querySelector('#document-image').innerText;
 const METADATA = JSON.parse(document.querySelector('#metadata').innerText);
 
 const TAG_COLORS = {

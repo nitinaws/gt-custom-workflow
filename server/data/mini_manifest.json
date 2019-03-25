@@ -1,2 +1,2 @@
-{'source': '{"image_file": "s3://smgtannotation/raw-abstracts-jpgs/1801_00006.jpg", "text_file": "s3://smgtannotation/text/1801_00006.jpg.csv", "metadata": {"ISBN": "0-947261-56-7", "Author": "Lisa Johnson"}}'}
-{'source': '{"image_file": "s3://smgtannotation/raw-abstracts-jpgs/1801_00015.jpg", "text_file": "s3://smgtannotation/text/1801_00015.jpg.csv", "metadata": {"ISBN": "0-418-56723-9", "Author": "Martin Rosario"}}'}
+{'source': '{"image_file": "s3://smgtannotation/raw-abstracts-jpgs/1801_00006.jpg", "text_file": "s3://smgtannotation/text/1801_00006.jpg.csv", "metadata": {"ISBN": "0-252-73515-3", "Author": "Kayla Mcdonald"}}'}
+{'source': '{"image_file": "s3://smgtannotation/raw-abstracts-jpgs/1801_00015.jpg", "text_file": "s3://smgtannotation/text/1801_00015.jpg.csv", "metadata": {"ISBN": "1-9739-0935-9", "Author": "Daniel Harding"}}'}
