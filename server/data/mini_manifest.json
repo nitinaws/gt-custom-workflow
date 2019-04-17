@@ -1,2 +1,2 @@
-{'source': '{"image_file": "s3://smgtannotation/raw-abstracts-jpgs/1801_00006.jpg", "text_file": "s3://smgtannotation/text/1801_00006.jpg.csv", "metadata": {"ISBN": "0-252-73515-3", "Author": "Kayla Mcdonald"}}'}
-{'source': '{"image_file": "s3://smgtannotation/raw-abstracts-jpgs/1801_00015.jpg", "text_file": "s3://smgtannotation/text/1801_00015.jpg.csv", "metadata": {"ISBN": "1-9739-0935-9", "Author": "Daniel Harding"}}'}
+{'source-ref': 's3://smgtannotation/raw-abstracts-jpgs/1801_00006.jpg', 'text-file-s3-uri': 's3://smgtannotation/text/1801_00006.jpg.csv', 'metadata': {'Author': 'Robert Underwood', 'ISBN': '1-358-98355-0'}}
+{'source-ref': 's3://smgtannotation/raw-abstracts-jpgs/1801_00015.jpg', 'text-file-s3-uri': 's3://smgtannotation/text/1801_00015.jpg.csv', 'metadata': {'Author': 'Stephanie Morgan', 'ISBN': '1-242-55362-2'}}

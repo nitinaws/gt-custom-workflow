@@ -1,13 +1,14 @@
 #### Steps taken to create this project:
+- Install Node, NPM Package Manager and Yarn(https://www.npmjs.com/package/yarn)
 
 - Clone repository and install pre-requisites
     
+    ```
     git clone https://github.com/nitinaws/gt-custom-workflow.git
     cd web
     yarn add react-text-annotate
-    npm install
     yarn build
-    
+    ```
 
 - Update your s3 bucket/prefix in `package.json`  
 

@@ -1,11 +1,8 @@
 import sys
-import numpy as np
 import boto3
 import json
-from urlparse import urlparse
-import random
+from urllib.parse import urlparse
 from faker import Faker
-#from awsglue.utils import getResolvedOptions
 
 faker = Faker()
 
@@ -25,25 +22,26 @@ def prepare(s3_image_path,s3_data_path ,s3_manifest_path):
     text_file_list = parse_response(text_response)
 
     content_list = []
-    entry = {}
 
     for item in image_list:
         print(item)
         image_filename = item.split('/')[-1]
         text_filename = "{}.csv".format(image_filename)
         print ("Trying to find {}/{}".format(data_url.path[1:] ,text_filename))
-
+        entry = {}
         if "{}/{}".format(data_url.path[1:],text_filename) in text_file_list:
-            entry['image_file'] = "s3://{}/{}".format(image_url.netloc,item)
-            entry['text_file'] = "s3://{}/{}/{}".format(data_url.netloc,data_url.path[1:],text_filename)
+            print("Adding new Entry")
+            entry['source-ref'] = "s3://{}/{}".format(image_url.netloc,item)
+            entry['text-file-s3-uri'] = "s3://{}/{}/{}".format(data_url.netloc,data_url.path[1:],text_filename)
             entry['metadata'] = fake_metadata()
-            content_list.append({"source": json.dumps(entry)})
+            print(entry)
+            content_list.append(entry)
 
     print(content_list)
     content = "".join(str("{}\n".format(line)) for line in content_list)
 
 
-    body = bytes(content)
+    body = bytes(content,'utf-8')
 
     resp = s3.put_object(Bucket=output_url.netloc, Key="{}/manifest.json".format(output_url.path[1:]), Body=body)
 
@@ -66,20 +64,6 @@ def fake_metadata():
 
 def main(args):
    try:
-        # args = getResolvedOptions(sys.argv,
-        #                       ['s3_image_path',
-        #                        's3_data_path',
-        #                        's3_manifest_path'
-        #                        'batch_size']
-        #                       )
-
-        # s3_image_path = args['s3_image_path']
-        # s3_data_path = args['s3_data_path']
-        # s3_manifest_path = args['s3_manifest_path']
-
-        #s3_image_path = event['s3_image_path']
-        #s3_data_path = event['s3_data_path']
-        #s3_manifest_path = event['s3_manifest_path']
         s3_image_path = args[1]
         s3_data_path = args[2]
         s3_manifest_path = args[3]
