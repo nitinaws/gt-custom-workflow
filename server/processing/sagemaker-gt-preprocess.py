@@ -68,6 +68,8 @@ def lambda_handler(event, context):
     }
 
     if metadata is not None:
+        # Add s3 URI for text file to metadata so it is preserved in output
+        metadata['text_file_s3_uri'] = text_file_s3_uri
         output['taskInput']['metadata'] = metadata
 
     if text_file_s3_uri is not None:

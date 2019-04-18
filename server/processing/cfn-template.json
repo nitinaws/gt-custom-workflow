@@ -37,7 +37,7 @@
                 "FunctionName": "gt-prelabel-task-lambda",
                 "Timeout": 60,
                 "Handler": "sagemaker-gt-preprocess.lambda_handler",
-                "Runtime": "python3.7",
+                "Runtime": "python3.6",
                 "MemorySize": 128
             }
         },
@@ -57,7 +57,7 @@
                 "FunctionName": "gt-postlabel-task-lambda",
                 "Timeout": 60,
                 "Handler": "sagemaker-gt-postprocess.lambda_handler",
-                "Runtime": "python3.7",
+                "Runtime": "python3.6",
                 "MemorySize": 128
             }
         }
