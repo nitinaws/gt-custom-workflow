@@ -1,7 +1,7 @@
 {   "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "AWS CloudFormation to deploy Lambdas",
     "Resources": {
-        "LambdaSMGTExecutionRole": {
+        "ConsolidationLambdaSMGTExecutionRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "AssumeRolePolicyDocument": {
@@ -16,15 +16,33 @@
                         }
                     ]
                 },
-                "ManagedPolicyArns": ["arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-                                      "arn:aws:iam::aws:policy/AmazonS3FullAccess"],
+                "ManagedPolicyArns": ["arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"],
+                "Path": "/"
+            }
+        },
+        "PreLabelingLambdaSMGTExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": ["lambda.amazonaws.com"]
+                            },
+                            "Action": ["sts:AssumeRole"]
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": ["arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"],
                 "Path": "/"
             }
         },
         "PreLabelTaskLambda": {
             "Type": "AWS::Lambda::Function",
             "DependsOn": [
-                "LambdaSMGTExecutionRole"
+                "PreLabelingLambdaSMGTExecutionRole"
             ],
             "Properties": {
                 "Code": {
@@ -32,7 +50,7 @@
                     "S3Key": "coderepo/labeling_lambda.zip"
                 },
                 "Role": {
-                    "Fn::GetAtt": ["LambdaSMGTExecutionRole", "Arn"]
+                    "Fn::GetAtt": ["PreLabelingLambdaSMGTExecutionRole", "Arn"]
                 },
                 "FunctionName": "gt-prelabel-task-lambda",
                 "Timeout": 60,
@@ -44,7 +62,7 @@
         "PostLabelTaskLambda": {
             "Type": "AWS::Lambda::Function",
             "DependsOn": [
-                "LambdaSMGTExecutionRole"
+                "ConsolidationLambdaSMGTExecutionRole"
             ],
             "Properties": {
                 "Code": {
@@ -52,7 +70,7 @@
                     "S3Key": "coderepo/labeling_lambda.zip"
                 },
                 "Role": {
-                    "Fn::GetAtt": ["LambdaSMGTExecutionRole", "Arn"]
+                    "Fn::GetAtt": ["ConsolidationLambdaSMGTExecutionRole", "Arn"]
                 },
                 "FunctionName": "gt-postlabel-task-lambda",
                 "Timeout": 60,
@@ -60,6 +78,12 @@
                 "Runtime": "python3.6",
                 "MemorySize": 128
             }
+        }
+    },
+    "Outputs" : {
+        "PostLabelingLambdaIAMRole" : {
+        "Description": "Post Labeling Consolidation Lambda IAM Role",
+        "Value" : { "Fn::GetAtt" : [ "ConsolidationLambdaSMGTExecutionRole", "Arn" ]}
         }
     }
 }
